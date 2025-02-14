@@ -7,10 +7,11 @@ def main():
     # Initialize pygame at the beginning of your main() function
     pygame.init()
     print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
     # Use pygame’s display.set_mode() to get a new GUI window
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    # create a new pygame.time.Clock object to help with FPS.
+    clock = pygame.time.Clock()
+    dt = 0
     # Use an infinite while loop for the game loop
     while True:
         # This for loop will check if the user has closed the window and exit the game loop if they do.
@@ -21,6 +22,8 @@ def main():
         screen.fill((0, 0, 0))
         # Use pygame’s display.flip() method to refresh the screen.
         pygame.display.flip()
+        # limit FPS to 60
+        dt = clock.tick(60) / 1000
 
 
 if __name__ == "__main__":
