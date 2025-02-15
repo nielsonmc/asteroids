@@ -1,7 +1,7 @@
-# import pygame at the top of your main.py file.
 import pygame
-# Ensure our predefined constants (constants.py) SCREEN_WIDTH and SCREEN_HEIGHT are imported at the top of your file
 from constants import *
+from player import Player
+
 
 def main():
     # Initialize pygame at the beginning of your main() function
@@ -11,6 +11,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     # create a new pygame.time.Clock object to help with FPS.
     clock = pygame.time.Clock()
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     dt = 0
     # Use an infinite while loop for the game loop
     while True:
@@ -19,7 +20,8 @@ def main():
             if event.type == pygame.QUIT:
                 return
         # Use the screen’s fill method to fill the screen with a solid “black” color
-        screen.fill((0, 0, 0))
+        screen.fill("black")
+        player.draw(screen)
         # Use pygame’s display.flip() method to refresh the screen.
         pygame.display.flip()
         # limit FPS to 60
