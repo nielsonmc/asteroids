@@ -19,6 +19,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        # Hook the update method into the game loop by calling it on the player object each frame before rendering.
+        player.update(dt)
         # Use the screen’s fill method to fill the screen with a solid “black” color
         screen.fill("black")
         player.draw(screen)
